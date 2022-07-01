@@ -15,3 +15,17 @@ class JSONModel: Codable {
     var vote_average: Double?
     var backdrop_path: String?
 }
+
+class TestModel {
+    var testPicture: String?
+    var testMovieName: String?
+    var testReleaseDate: String?
+    var testRating: String?
+    
+    init(testPicture: String?, testMovieName: String?, testReleaseDate: String?, testRating: String?) {
+        self.testPicture = testPicture
+        self.testMovieName = testMovieName
+        self.testReleaseDate = testReleaseDate
+        self.testRating = testRating
+    }
+}
