@@ -32,8 +32,8 @@ extension MainViewController: UICollectionViewDataSource {
         guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell()}
         cell.posterPreviewImageView.image = UIImage(named: testArray[indexPath.row].testPicture ?? "image1")
         cell.movieNameLabel.text = testArray[indexPath.row].testMovieName
-        cell.releaseYearLabel.text = testArray[indexPath.row].testReleaseDate
-        cell.ratingLabel.text = testArray[indexPath.row].testRating
+        cell.releaseYearLabel.text = "Год " + testArray[indexPath.row].testReleaseDate!
+        cell.ratingLabel.text = "Рейтинг " + testArray[indexPath.row].testRating!
         return cell
     }
 }
