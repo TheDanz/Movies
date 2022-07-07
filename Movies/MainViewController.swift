@@ -16,6 +16,10 @@ class MainViewController: UIViewController {
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
         moviesSearchBar.delegate = self
+        
+        let xibCell = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
+        mainCollectionView.register(xibCell, forCellWithReuseIdentifier: "MovieCell")
+        mainCollectionView.reloadData()
     }
 }
 

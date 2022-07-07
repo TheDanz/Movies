@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0527C5E2287780F800D93561 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0527C5E1287780F800D93561 /* MovieCollectionViewCell.xib */; };
 		057BCB47286F6D530080358F /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057BCB46286F6D530080358F /* MovieCollectionViewCell.swift */; };
 		05BA7E8628650A6900C9D393 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BA7E8528650A6900C9D393 /* AppDelegate.swift */; };
 		05BA7E8828650A6900C9D393 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BA7E8728650A6900C9D393 /* SceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0527C5E1287780F800D93561 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 		057BCB46286F6D530080358F /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		05BA7E8228650A6900C9D393 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05BA7E8528650A6900C9D393 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				05BA7E9F28650F9800C9D393 /* FavoriteMoviesViewController.swift */,
 				05BA7EA1286516EC00C9D393 /* JSONModel.swift */,
 				057BCB46286F6D530080358F /* MovieCollectionViewCell.swift */,
+				0527C5E1287780F800D93561 /* MovieCollectionViewCell.xib */,
 				05BA7E8B28650A6900C9D393 /* Main.storyboard */,
 				05BA7E9028650A6B00C9D393 /* LaunchScreen.storyboard */,
 				05BA7E8E28650A6B00C9D393 /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 				05BA7E9228650A6B00C9D393 /* LaunchScreen.storyboard in Resources */,
 				05BA7E8F28650A6B00C9D393 /* Assets.xcassets in Resources */,
 				05BA7E8D28650A6900C9D393 /* Main.storyboard in Resources */,
+				0527C5E2287780F800D93561 /* MovieCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
