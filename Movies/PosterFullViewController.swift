@@ -1,14 +1,16 @@
 //
-//  MovieDetailsViewController.swift
+//  PosterFullViewController.swift
 //  Movies
 //
-//  Created by Danil Ryumin on 24.06.2022.
+//  Created by Danil Ryumin on 17.07.2022.
 //
 
 import UIKit
 
-class MovieDetailsViewController: UIViewController {
-
+class PosterFullViewController: UIViewController {
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var fullPosterImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,8 +18,6 @@ class MovieDetailsViewController: UIViewController {
     }
     
 
-    @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
-    }
     /*
     // MARK: - Navigation
 
