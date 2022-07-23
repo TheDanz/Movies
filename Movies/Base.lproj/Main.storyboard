@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7EB-xE-XfQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LIt-Hm-E93">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -90,7 +90,7 @@
         <!--Movie Details View Controller-->
         <scene sceneID="iXf-yb-BS9">
             <objects>
-                <viewController id="7EB-xE-XfQ" customClass="MovieDetailsViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailsViewController" id="7EB-xE-XfQ" customClass="MovieDetailsViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tUO-aq-OeF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -216,6 +216,12 @@
                             <constraint firstItem="uWA-ey-RNz" firstAttribute="top" secondItem="60S-4q-fvv" secondAttribute="top" constant="25" id="jRQ-rd-Fec"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="movieNameLabel" destination="uWA-ey-RNz" id="QeA-dg-gWD"/>
+                        <outlet property="movieRatingLabel" destination="pUO-OZ-lvN" id="T9O-er-uNR"/>
+                        <outlet property="movieReleaseYearLabel" destination="Xnc-in-hfV" id="Gil-DY-Y9q"/>
+                        <outlet property="posterImageView" destination="2ld-Rl-91J" id="5FQ-WR-ebl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MbE-Kt-TPs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer numberOfTapsRequired="2" id="Dde-Cx-9r0">
@@ -276,6 +282,9 @@
                                     <constraint firstAttribute="height" constant="40" id="gOB-jy-MkM"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="closeButtonClick:" destination="ZUW-Kr-FMn" eventType="touchUpInside" id="olG-JA-7bd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eiO-mS-X2d"/>

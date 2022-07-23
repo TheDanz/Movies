@@ -7,25 +7,45 @@
 
 import UIKit
 
-class MovieDetailsViewController: UIViewController {
-
+class MovieDetailsViewController: UIViewController, UIViewControllerTransitioningDelegate {
+    var receivedIndex: Int = Int()
+    var transtition: RoundingTransition = RoundingTransition()
+    @IBOutlet weak var movieNameLabel: UILabel!
+    @IBOutlet weak var movieRatingLabel: UILabel!
+    @IBOutlet weak var posterImageView: UIImageView!
+    @IBOutlet weak var movieReleaseYearLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        movieNameLabel.text = testArray[receivedIndex].testMovieName
+        movieRatingLabel.text = "Рейтинг " + testArray[receivedIndex].testRating!
+        posterImageView.image = UIImage(named: testArray[receivedIndex].testPicture ?? "image1")
+        movieReleaseYearLabel.text = "Год " + testArray[receivedIndex].testReleaseDate!
     }
     
-
-    @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transtition.transitionProfile = .show
+        transtition.start = posterImageView.center
+        transtition.roundColor = UIColor.lightGray
+        return transtition
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transtition.transitionProfile = .cancel
+        transtition.start = posterImageView.center
+        transtition.roundColor = UIColor.lightGray
+        return transtition
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let destinationViewController = segue.destination as? PosterFullViewController else { return }
+        destinationViewController.detailIndexPath = receivedIndex
+        destinationViewController.transitioningDelegate = self
+        destinationViewController.modalPresentationStyle = .custom
     }
-    */
-
+    
+    @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
+        
+    }
 }

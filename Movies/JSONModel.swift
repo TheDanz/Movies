@@ -29,3 +29,11 @@ class TestModel {
         self.testRating = testRating
     }
 }
+
+var testArray: [TestModel] = [
+    TestModel(testPicture: "image1", testMovieName: "Фильм1", testReleaseDate: "2001", testRating: "1.1"),
+    TestModel(testPicture: "image2", testMovieName: "Фильм2", testReleaseDate: "2002", testRating: "2.2"),
+    TestModel(testPicture: "image3", testMovieName: "Фильм3", testReleaseDate: "2003", testRating: "3.3"),
+    TestModel(testPicture: "image4", testMovieName: "Фильм4", testReleaseDate: "2004", testRating: "4.4"),
+    TestModel(testPicture: "image5", testMovieName: "Фильм5", testReleaseDate: "2005", testRating: "5.5")
+]
