@@ -9,6 +9,7 @@ import UIKit
 
 class MovieDetailsViewController: UIViewController, UIViewControllerTransitioningDelegate {
     var receivedIndex: Int = Int()
+    var cameFromFav: Bool = Bool()
     var transtition: RoundingTransition = RoundingTransition()
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
