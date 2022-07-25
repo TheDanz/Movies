@@ -19,10 +19,22 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        movieNameLabel.text = testArray[receivedIndex].testMovieName
-        movieRatingLabel.text = "Рейтинг " + testArray[receivedIndex].testRating!
-        posterImageView.image = UIImage(named: testArray[receivedIndex].testPicture ?? "image1")
-        movieReleaseYearLabel.text = "Год " + testArray[receivedIndex].testReleaseDate!
+        movieNameLabel.text = Model().testArray[receivedIndex].testTitle
+        movieRatingLabel.text = "Рейтинг " + String(Model().testArray[receivedIndex].testRating ?? 0)
+        posterImageView.image = UIImage(named: Model().testArray[receivedIndex].testPicture ?? "image1")
+        movieReleaseYearLabel.text = "Год " + String(Model().testArray[receivedIndex].testYear!)
+        
+        if cameFromFav {
+            posterImageView.image = UIImage(named: Model().showLikedItems()[receivedIndex].testPicture ?? "image1")
+            movieNameLabel.text = Model().showLikedItems()[receivedIndex].testTitle
+            movieReleaseYearLabel.text = String(Model().showLikedItems()[receivedIndex].testYear ?? 0)
+            movieRatingLabel.text = String(Model().showLikedItems()[receivedIndex].testRating ?? 0)
+        } else {
+            posterImageView.image = UIImage(named: Model().testArray[receivedIndex].testPicture ?? "image1")
+            movieNameLabel.text = Model().testArray[receivedIndex].testTitle
+            movieReleaseYearLabel.text = String(Model().testArray[receivedIndex].testYear ?? 0)
+            movieRatingLabel.text = String(Model().testArray[receivedIndex].testRating ?? 0)
+        }
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

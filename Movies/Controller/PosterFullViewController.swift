@@ -15,7 +15,7 @@ class PosterFullViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fullPosterImageView.image = UIImage(named: testArray[detailIndexPath].testPicture ?? "image1")
+        fullPosterImageView.image = UIImage(named: Model().testArray[detailIndexPath].testPicture ?? "image1")
     }
     
     @IBAction func closeButtonClick(_ sender: Any) {

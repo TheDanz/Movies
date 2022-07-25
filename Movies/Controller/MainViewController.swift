@@ -29,18 +29,18 @@ extension MainViewController: UICollectionViewDelegate {
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return testArray.count
+        return Model().testArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell()}
-        cell.posterPreviewImageView.image = UIImage(named: testArray[indexPath.row].testPicture ?? "image1")
-        cell.movieNameLabel.text = testArray[indexPath.row].testMovieName
-        cell.releaseYearLabel.text = "Год " + testArray[indexPath.row].testReleaseDate!
-        cell.ratingLabel.text = "Рейтинг " + testArray[indexPath.row].testRating!
+        cell.posterPreviewImageView.image = UIImage(named: Model().testArray[indexPath.row].testPicture ?? "image1")
+        cell.movieNameLabel.text = Model().testArray[indexPath.row].testTitle
+        cell.releaseYearLabel.text = "Год " + String(Model().testArray[indexPath.row].testYear ?? 0)
+        cell.ratingLabel.text = "Рейтинг " + String(Model().testArray[indexPath.row].testRating ?? 0)
         return cell
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController else { return }
         destinationViewController.receivedIndex = indexPath.row
