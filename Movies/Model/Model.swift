@@ -6,7 +6,16 @@ class Model {
         Item(id: 3, testPicture: "image4", testTitle: "Фильм4", testYear: 2004, testRating: 4.4, isLiked: true),
         Item(id: 4, testPicture: "image5", testTitle: "Фильм5", testYear: 2005, testRating: 5.5, isLiked: false)
     ]
+    var newTestArray: [Item] = []
     var likedMoviesArray: [Item] = []
+    var sortAscending: Bool = false
+    
+    func ratingSort() {
+        self.testArray.sort() {
+            sortAscending ? ($0.testRating ?? 0) < ($1.testRating ?? 0) : ($0.testRating ?? 0) > ($1.testRating ?? 0)
+        }
+        newTestArray = testArray
+    }
     
     func showLikedItems() -> [Item] {
         for item in testArray {

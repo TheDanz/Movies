@@ -2,6 +2,7 @@ import UIKit
 
 class FavoriteMoviesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    var model = Model()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +26,12 @@ extension FavoriteMoviesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteMovieCollectionViewCell", for: indexPath) as? FavoriteMovieCollectionViewCell else { return UICollectionViewCell() }
-        cell.posterImageView.image = UIImage(named: Model().showLikedItems()[indexPath.item].testPicture ?? "image2")
-        cell.movieNameLabel.text = Model().showLikedItems()[indexPath.item].testTitle
-        cell.movieReleaseYearLabel.text = String(Model().showLikedItems()[indexPath.item].testYear ?? 0)
-        cell.movieRatingLabel.text = String(Model().showLikedItems()[indexPath.item].testRating ?? 0)
+//        cell.posterImageView.image = UIImage(named: Model().showLikedItems()[indexPath.item].testPicture ?? "image2")
+//        cell.movieNameLabel.text = Model().showLikedItems()[indexPath.item].testTitle
+//        cell.movieReleaseYearLabel.text = String(Model().showLikedItems()[indexPath.item].testYear ?? 0)
+//        cell.movieRatingLabel.text = String(Model().showLikedItems()[indexPath.item].testRating ?? 0)
+        
+        cell.data = self.model.likedMoviesArray[indexPath.item]
         
         return cell
     }
