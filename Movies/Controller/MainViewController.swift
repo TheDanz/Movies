@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setFavoriteMoviesButton()
         model.newTestArray = model.testArray
         
         mainCollectionView.dataSource = self
@@ -37,6 +38,24 @@ class MainViewController: UIViewController {
         sortButton.image = model.sortAscending ? arrowUp : arrowDown
         model.ratingSort()
         mainCollectionView.reloadData()
+    }
+    
+    private func setFavoriteMoviesButton() {
+        let button = UIButton()
+        button.setBackgroundImage(#imageLiteral(resourceName: "heart"), for: .normal)
+        button.addTarget(self, action: #selector(handlerCreateNewButtonPressed), for: .touchUpInside)
+        view.addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40).isActive = true
+        button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 70).isActive = true
+    }
+    
+    @objc func handlerCreateNewButtonPressed() {
+        guard let FavoriteMoviesViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FavoriteMoviesViewController") as? FavoriteMoviesViewController else { return }
+        guard let navigator = navigationController else { return }
+        navigator.pushViewController(FavoriteMoviesViewController, animated: true)
     }
 }
 

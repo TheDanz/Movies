@@ -1,10 +1,3 @@
-//
-//  MovieCollectionViewCell.swift
-//  Movies
-//
-//  Created by Danil Ryumin on 01.07.2022.
-//
-
 import UIKit
 
 class MovieCollectionViewCell: UICollectionViewCell {

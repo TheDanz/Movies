@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mxh-YT-HXO">
-                                <rect key="frame" x="20" y="175" width="374" height="687"/>
+                                <rect key="frame" x="20" y="88" width="374" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Hd-Pj-c2G">
                                     <size key="itemSize" width="174" height="343"/>
@@ -47,7 +47,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Mxh-YT-HXO" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="1Hx-cg-loD"/>
-                            <constraint firstItem="Mxh-YT-HXO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="87" id="I0W-Mj-k5j"/>
+                            <constraint firstItem="Mxh-YT-HXO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="I0W-Mj-k5j"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mxh-YT-HXO" secondAttribute="trailing" constant="20" id="WrK-VE-uUp"/>
                             <constraint firstItem="Mxh-YT-HXO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="v72-M2-BJm"/>
                         </constraints>
@@ -72,7 +72,7 @@
         <!--Favorite Movies View Controller-->
         <scene sceneID="xzm-7f-aax">
             <objects>
-                <viewController id="G5L-bp-jvy" customClass="FavoriteMoviesViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoriteMoviesViewController" id="G5L-bp-jvy" customClass="FavoriteMoviesViewController" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nS5-IG-TJt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

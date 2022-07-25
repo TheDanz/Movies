@@ -1,10 +1,3 @@
-//
-//  RoundingTransition.swift
-//  Movies
-//
-//  Created by Danil Ryumin on 23.07.2022.
-//
-
 import Foundation
 import UIKit
 
