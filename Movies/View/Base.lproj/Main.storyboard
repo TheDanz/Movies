@@ -79,13 +79,53 @@
                     <view key="view" contentMode="scaleToFill" id="nS5-IG-TJt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Nz-Ql-5gF">
+                                <rect key="frame" x="20" y="103" width="374" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M3m-qE-xDD">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="N9a-2A-qJ0">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="231-cb-Bco">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Любимые фильмы" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X6P-aj-n3w">
+                                <rect key="frame" x="20" y="60" width="374" height="35"/>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="AJs-38-rVN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0Nz-Ql-5gF" firstAttribute="bottom" secondItem="AJs-38-rVN" secondAttribute="bottom" id="2Wo-UG-C5g"/>
+                            <constraint firstItem="AJs-38-rVN" firstAttribute="trailing" secondItem="X6P-aj-n3w" secondAttribute="trailing" constant="20" id="3k0-BD-5IW"/>
+                            <constraint firstItem="X6P-aj-n3w" firstAttribute="leading" secondItem="AJs-38-rVN" secondAttribute="leading" constant="20" id="HYZ-NA-2zG"/>
+                            <constraint firstItem="X6P-aj-n3w" firstAttribute="top" secondItem="AJs-38-rVN" secondAttribute="top" constant="16" id="KwS-RV-bTd"/>
+                            <constraint firstItem="0Nz-Ql-5gF" firstAttribute="leading" secondItem="AJs-38-rVN" secondAttribute="leading" constant="20" id="bNO-lc-dM3"/>
+                            <constraint firstItem="0Nz-Ql-5gF" firstAttribute="top" secondItem="X6P-aj-n3w" secondAttribute="bottom" constant="8" symbolic="YES" id="igH-Ha-Mlv"/>
+                            <constraint firstItem="AJs-38-rVN" firstAttribute="trailing" secondItem="0Nz-Ql-5gF" secondAttribute="trailing" constant="20" id="wyv-g7-c0Q"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="0Nz-Ql-5gF" id="bc8-b5-ANE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRa-I0-OnI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="745" y="762"/>
+            <point key="canvasLocation" x="744.92753623188412" y="761.38392857142856"/>
         </scene>
         <!--Movie Details View Controller-->
         <scene sceneID="iXf-yb-BS9">
