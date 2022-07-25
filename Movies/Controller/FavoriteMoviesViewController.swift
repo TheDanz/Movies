@@ -6,6 +6,8 @@ class FavoriteMoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        model.showLikedItems()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -21,12 +23,12 @@ extension FavoriteMoviesViewController: UICollectionViewDelegate {
 
 extension FavoriteMoviesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Model().showLikedItems().count
+        return model.likedMoviesArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteMovieCollectionViewCell", for: indexPath) as? FavoriteMovieCollectionViewCell else { return UICollectionViewCell() }
-        cell.data = self.model.showLikedItems()[indexPath.item]
+        cell.data = self.model.likedMoviesArray[indexPath.item]
         return cell
     }
 }

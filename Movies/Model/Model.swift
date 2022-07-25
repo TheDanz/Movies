@@ -17,13 +17,29 @@ class Model {
         newTestArray = testArray
     }
     
-    func showLikedItems() -> [Item] {
+    func showLikedItems() {
         for item in testArray {
             if item.isLiked == true {
                 likedMoviesArray.append(item)
             }
         }
-        return likedMoviesArray
+    }
+    
+    func search(searchTextValue: String) {
+        newTestArray = []
+        if searchTextValue == "" {
+            newTestArray = testArray
+        } else {
+            for item in testArray {
+                guard let unwrItem = item.testTitle else { return }
+                if unwrItem.contains(searchTextValue) {
+                    newTestArray.append(item)
+                }
+            }
+        }
+        newTestArray = testArray.filter({
+            $0.testTitle?.range(of: searchTextValue, options: .caseInsensitive) != nil
+        })
     }
 }
 

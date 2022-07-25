@@ -80,11 +80,19 @@ extension MainViewController: UICollectionViewDataSource {
         
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController else { return }
-        destinationViewController.receivedIndex = model.newTestArray[indexPath.row].id ?? 0
+        destinationViewController.receivedIndex = model.testArray[indexPath.row].id ?? 0
         navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }
 
 extension MainViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        model.search(searchTextValue: searchText)
+        mainCollectionView.reloadData()
+    }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        model.newTestArray = model.testArray
+        mainCollectionView.reloadData()
+    }
 }

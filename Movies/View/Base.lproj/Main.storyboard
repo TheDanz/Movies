@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -132,8 +133,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название фильма" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWA-ey-RNz">
-                                <rect key="frame" x="100" y="69" width="214" height="25.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название фильма" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWA-ey-RNz">
+                                <rect key="frame" x="0.0" y="69" width="414" height="25.5"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -234,26 +235,45 @@
                                     </collectionView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQ6-Za-Dwx">
+                                <rect key="frame" x="368.5" y="44" width="45.5" height="25.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25.5" id="a5F-3Y-x9L"/>
+                                    <constraint firstAttribute="width" constant="45.5" id="xUP-d5-bw3"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="likeButtonClick:" destination="7EB-xE-XfQ" eventType="touchUpInside" id="PpS-sE-fTh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="60S-4q-fvv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="MZ7-0V-mxs" firstAttribute="top" secondItem="tUO-aq-OeF" secondAttribute="top" constant="669" id="3iw-34-gaa"/>
                             <constraint firstItem="60S-4q-fvv" firstAttribute="trailing" secondItem="PKZ-Qo-spE" secondAttribute="trailing" constant="20" id="44Z-CE-GOG"/>
+                            <constraint firstItem="uWA-ey-RNz" firstAttribute="leading" secondItem="60S-4q-fvv" secondAttribute="leading" id="4Bi-eP-YBK"/>
                             <constraint firstItem="MZ7-0V-mxs" firstAttribute="trailing" secondItem="PKZ-Qo-spE" secondAttribute="trailing" id="AFS-78-hgx"/>
-                            <constraint firstItem="uWA-ey-RNz" firstAttribute="leading" secondItem="60S-4q-fvv" secondAttribute="leading" constant="100" id="C00-Qb-YY8"/>
                             <constraint firstItem="PKZ-Qo-spE" firstAttribute="top" secondItem="uWA-ey-RNz" secondAttribute="bottom" constant="22.5" id="D6U-hw-rcW"/>
                             <constraint firstItem="PKZ-Qo-spE" firstAttribute="leading" secondItem="SMK-rq-9Sg" secondAttribute="trailing" constant="8" symbolic="YES" id="LFZ-sB-80G"/>
+                            <constraint firstItem="TQ6-Za-Dwx" firstAttribute="top" secondItem="60S-4q-fvv" secondAttribute="top" id="P45-QV-sbn"/>
+                            <constraint firstItem="60S-4q-fvv" firstAttribute="trailing" secondItem="TQ6-Za-Dwx" secondAttribute="trailing" id="Qie-09-Fke"/>
                             <constraint firstItem="SMK-rq-9Sg" firstAttribute="top" secondItem="uWA-ey-RNz" secondAttribute="bottom" constant="7.5" id="SNq-T6-ttw"/>
                             <constraint firstItem="SMK-rq-9Sg" firstAttribute="leading" secondItem="60S-4q-fvv" secondAttribute="leading" constant="20" id="WvV-kv-8tg"/>
-                            <constraint firstItem="60S-4q-fvv" firstAttribute="trailing" secondItem="uWA-ey-RNz" secondAttribute="trailing" constant="100" id="a6a-I6-alz"/>
+                            <constraint firstItem="60S-4q-fvv" firstAttribute="trailing" secondItem="uWA-ey-RNz" secondAttribute="trailing" id="a6a-I6-alz"/>
                             <constraint firstItem="MZ7-0V-mxs" firstAttribute="top" secondItem="PKZ-Qo-spE" secondAttribute="bottom" constant="28.5" id="e1R-Mc-1P5"/>
                             <constraint firstItem="MZ7-0V-mxs" firstAttribute="leading" secondItem="SMK-rq-9Sg" secondAttribute="leading" id="hyF-6h-Afu"/>
                             <constraint firstItem="60S-4q-fvv" firstAttribute="bottom" secondItem="MZ7-0V-mxs" secondAttribute="bottom" constant="36.5" id="iMw-K6-gOy"/>
                             <constraint firstItem="uWA-ey-RNz" firstAttribute="top" secondItem="60S-4q-fvv" secondAttribute="top" constant="25" id="jRQ-rd-Fec"/>
+                            <constraint firstItem="uWA-ey-RNz" firstAttribute="trailing" secondItem="60S-4q-fvv" secondAttribute="trailing" id="leq-qB-fuD"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="likeButton" destination="TQ6-Za-Dwx" id="2VG-90-QHs"/>
                         <outlet property="movieNameLabel" destination="uWA-ey-RNz" id="QeA-dg-gWD"/>
                         <outlet property="movieRatingLabel" destination="pUO-OZ-lvN" id="T9O-er-uNR"/>
                         <outlet property="movieReleaseYearLabel" destination="Xnc-in-hfV" id="Gil-DY-Y9q"/>
@@ -366,6 +386,7 @@
     </scenes>
     <resources>
         <image name="arrow.down" catalog="system" width="120" height="128"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="image10" width="410" height="622"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
