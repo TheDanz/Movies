@@ -10,9 +10,13 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var movieReleaseYearLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var framesCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        framesCollectionView.delegate = self
+        framesCollectionView.dataSource = self
         
         movieNameLabel.text = Model().testArray[receivedIndex].testTitle
         movieRatingLabel.text = "Рейтинг " + String(Model().testArray[receivedIndex].testRating ?? 0)
@@ -36,6 +40,9 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         } else {
             likeButton.tintColor = .black
         }
+    }
+    
+    @IBAction func framesButtonClick(_ sender: Any) {
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -65,5 +72,21 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     
     @IBAction func tapGestureAction(_ sender: UITapGestureRecognizer) {
         
+    }
+}
+
+extension MovieDetailsViewController: UICollectionViewDelegate {
+    
+}
+
+extension MovieDetailsViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        guard let cell = framesCollectionView.dequeueReusableCell(withReuseIdentifier: "FramesCollectionViewCell", for: indexPath) else { return UICollectionViewCell() }
+        
+        return UICollectionViewCell()
     }
 }
