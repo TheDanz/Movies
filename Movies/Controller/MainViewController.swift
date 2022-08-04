@@ -1,11 +1,5 @@
-//
-//  ViewController.swift
-//  Movies
-//
-//  Created by Danil Ryumin on 23.06.2022.
-//
-
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!

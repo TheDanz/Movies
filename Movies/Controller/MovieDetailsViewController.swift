@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class MovieDetailsViewController: UIViewController, UIViewControllerTransitioningDelegate {
     var receivedIndex: Int = Int()

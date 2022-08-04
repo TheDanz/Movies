@@ -1,11 +1,5 @@
-//
-//  PosterFullViewController.swift
-//  Movies
-//
-//  Created by Danil Ryumin on 17.07.2022.
-//
-
 import UIKit
+import RealmSwift
 
 class PosterFullViewController: UIViewController {
     @IBOutlet weak var closeButton: UIButton!

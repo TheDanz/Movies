@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class FavoriteMovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var posterImageView: UIImageView!

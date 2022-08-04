@@ -1,4 +1,5 @@
 import UIKit
+import RealmSwift
 
 class FullPictureViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!

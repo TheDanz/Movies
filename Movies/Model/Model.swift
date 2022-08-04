@@ -1,3 +1,5 @@
+import RealmSwift
+
 class Model {
     var testArray: [Item] = [
         Item(id: 0, testPicture: "image1", testTitle: "Фильм1", testYear: 2001, testRating: 1.1, isLiked: true),
