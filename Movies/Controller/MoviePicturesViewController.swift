@@ -1,29 +1,21 @@
-//
-//  MoviePicturesViewController.swift
-//  Movies
-//
-//  Created by Danil Ryumin on 24.06.2022.
-//
-
 import UIKit
 
-class MoviePicturesViewController: UIViewController {
-
+class MoviePicturesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 9
     }
-    */
-
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoviePicturesCollectionViewCell", for: indexPath)
+        return cell
+    }
 }
