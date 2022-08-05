@@ -9,8 +9,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        model.ratingSort()
+
         setFavoriteMoviesButton()
-        model.newTestArray = model.testArray
+        model.sortedMovieObjects = model.movieObjects
         
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
@@ -22,7 +25,7 @@ class MainViewController: UIViewController {
         
         let xibCell = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
         mainCollectionView.register(xibCell, forCellWithReuseIdentifier: "MovieCell")
-        model.ratingSort()
+
         mainCollectionView.reloadData()
     }
     @IBAction func sortButtonClick(_ sender: Any) {
@@ -59,34 +62,44 @@ extension MainViewController: UICollectionViewDelegate {
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.newTestArray.count
+        return model.arrayHelper?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCollectionViewCell else { return UICollectionViewCell()}
-//        cell.posterPreviewImageView.image = UIImage(named: Model().testArray[indexPath.row].testPicture ?? "image1")
-//        cell.movieNameLabel.text = Model().testArray[indexPath.row].testTitle
-//        cell.releaseYearLabel.text = "Год " + String(Model().testArray[indexPath.row].testYear ?? 0)
-//        cell.ratingLabel.text = "Рейтинг " + String(Model().testArray[indexPath.row].testRating ?? 0)
-        cell.data = self.model.newTestArray[indexPath.item]
+        guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCollectionViewCell,
+              let item = model.arrayHelper?[indexPath.row] else { return UICollectionViewCell() }
+        cell.data = item
         return cell
     }
         
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController else { return }
-        destinationViewController.receivedIndex = model.testArray[indexPath.row].id ?? 0
+        destinationViewController.receivedIndex = model.arrayHelper?[indexPath.row].id ?? 0
         navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }
 
 extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        model.arrayHelper = model.movieObjects
         model.search(searchTextValue: searchText)
+        
+        if searchBar.text?.count == 0 {
+            model.arrayHelper = model.movieObjects
+            model.ratingSort()
+        }
         mainCollectionView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        model.newTestArray = model.testArray
+        model.arrayHelper = model.movieObjects
+        
+        if searchBar.text?.count == 0 {
+            model.arrayHelper = model.movieObjects
+            model.ratingSort()
+        }
+        
+        model.ratingSort()
         mainCollectionView.reloadData()
     }
 }

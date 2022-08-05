@@ -16,6 +16,9 @@ class FavoriteMoviesViewController: UIViewController {
         collectionView.register(xibFavoriteCell, forCellWithReuseIdentifier: "FavoriteMovieCollectionViewCell")
         collectionView.reloadData()
     }
+    @IBAction func updateButtonClick(_ sender: Any) {
+        collectionView.reloadData()
+    }
 }
 
 extension FavoriteMoviesViewController: UICollectionViewDelegate {
@@ -24,12 +27,15 @@ extension FavoriteMoviesViewController: UICollectionViewDelegate {
 
 extension FavoriteMoviesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.likedMoviesArray.count
+        return model.likedMovieObjects?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteMovieCollectionViewCell", for: indexPath) as? FavoriteMovieCollectionViewCell else { return UICollectionViewCell() }
-        cell.data = self.model.likedMoviesArray[indexPath.item]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FavoriteMovieCollectionViewCell", for: indexPath) as? FavoriteMovieCollectionViewCell,
+              let likedItem = model.likedMovieObjects?[indexPath.row] else  {
+                  return UICollectionViewCell()
+              }
+        cell.data = likedItem
         return cell
     }
 }

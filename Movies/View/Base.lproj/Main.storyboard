@@ -79,7 +79,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0Nz-Ql-5gF">
-                                <rect key="frame" x="20" y="103" width="374" height="759"/>
+                                <rect key="frame" x="20" y="103" width="374" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="M3m-qE-xDD">
                                     <size key="itemSize" width="128" height="128"/>
@@ -117,6 +117,14 @@
                             <constraint firstItem="AJs-38-rVN" firstAttribute="trailing" secondItem="0Nz-Ql-5gF" secondAttribute="trailing" constant="20" id="wyv-g7-c0Q"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="P0A-Xq-Pdd">
+                            <connections>
+                                <action selector="updateButtonClick:" destination="G5L-bp-jvy" id="Qsj-7e-BTE"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="0Nz-Ql-5gF" id="bc8-b5-ANE"/>
                     </connections>

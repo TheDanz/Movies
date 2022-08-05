@@ -19,24 +19,24 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         framesCollectionView.delegate = self
         framesCollectionView.dataSource = self
         
-        movieNameLabel.text = Model().testArray[receivedIndex].testTitle
-        movieRatingLabel.text = "Рейтинг " + String(Model().testArray[receivedIndex].testRating ?? 0)
-        posterImageView.image = UIImage(named: Model().testArray[receivedIndex].testPicture ?? "image1")
-        movieReleaseYearLabel.text = "Год " + String(Model().testArray[receivedIndex].testYear!)
+        movieNameLabel.text = Model().movieObjects?[receivedIndex].title
+        movieRatingLabel.text = "Рейтинг " + String(Model().movieObjects?[receivedIndex].rating ?? 0)
+        posterImageView.image = UIImage(named: Model().movieObjects?[receivedIndex].picture ?? "image1")
+        movieReleaseYearLabel.text = "Год " + String(Model().movieObjects?[receivedIndex].releaseYear ?? 0)
         
         if cameFromFav {
-            posterImageView.image = UIImage(named: Model().likedMoviesArray[receivedIndex].testPicture ?? "image1")
-            movieNameLabel.text = Model().likedMoviesArray[receivedIndex].testTitle
-            movieReleaseYearLabel.text = String(Model().likedMoviesArray[receivedIndex].testYear ?? 0)
-            movieRatingLabel.text = String(Model().likedMoviesArray[receivedIndex].testRating ?? 0)
+            posterImageView.image = UIImage(named: Model().likedMovieObjects?[receivedIndex].picture ?? "image1")
+            movieNameLabel.text = Model().likedMovieObjects?[receivedIndex].title
+            movieReleaseYearLabel.text = String(Model().likedMovieObjects?[receivedIndex].releaseYear ?? 0)
+            movieRatingLabel.text = String(Model().likedMovieObjects?[receivedIndex].rating ?? 0)
         } else {
-            posterImageView.image = UIImage(named: Model().testArray[receivedIndex].testPicture ?? "image1")
-            movieNameLabel.text = Model().testArray[receivedIndex].testTitle
-            movieReleaseYearLabel.text = String(Model().testArray[receivedIndex].testYear ?? 0)
-            movieRatingLabel.text = String(Model().testArray[receivedIndex].testRating ?? 0)
+            posterImageView.image = UIImage(named: Model().movieObjects?[receivedIndex].picture ?? "image1")
+            movieNameLabel.text = Model().movieObjects?[receivedIndex].title
+            movieReleaseYearLabel.text = String(Model().movieObjects?[receivedIndex].releaseYear ?? 0)
+            movieRatingLabel.text = String(Model().movieObjects?[receivedIndex].rating ?? 0)
         }
         
-        if model.testArray[receivedIndex].isLiked == true {
+        if model.movieObjects?[receivedIndex].isLiked == true {
             likeButton.tintColor = .red
         } else {
             likeButton.tintColor = .black
@@ -61,7 +61,15 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     }
     
     @IBAction func likeButtonClick(_ sender: Any) {
-
+        model.updateLike(at: receivedIndex)
+        
+        if likeButton.alpha == 1 {
+            likeButton.alpha = 0.45
+            likeButton.tintColor = .gray
+        } else {
+            likeButton.alpha = 1
+            likeButton.tintColor = .black
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
