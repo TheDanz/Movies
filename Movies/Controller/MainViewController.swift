@@ -26,7 +26,9 @@ class MainViewController: UIViewController {
         let xibCell = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
         mainCollectionView.register(xibCell, forCellWithReuseIdentifier: "MovieCell")
 
-        mainCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
     }
     @IBAction func sortButtonClick(_ sender: Any) {
         let arrowUp = UIImage(systemName: "arrow.up")
@@ -34,7 +36,9 @@ class MainViewController: UIViewController {
         model.sortAscending = !model.sortAscending
         sortButton.image = model.sortAscending ? arrowUp : arrowDown
         model.ratingSort()
-        mainCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
     }
     
     private func setFavoriteMoviesButton() {
@@ -88,7 +92,9 @@ extension MainViewController: UISearchBarDelegate {
             model.arrayHelper = model.movieObjects
             model.ratingSort()
         }
-        mainCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -100,6 +106,8 @@ extension MainViewController: UISearchBarDelegate {
         }
         
         model.ratingSort()
-        mainCollectionView.reloadData()
+        DispatchQueue.main.async {
+            self.mainCollectionView.reloadData()
+        }
     }
 }

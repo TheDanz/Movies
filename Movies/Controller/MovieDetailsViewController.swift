@@ -19,10 +19,17 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         framesCollectionView.delegate = self
         framesCollectionView.dataSource = self
         
-        movieNameLabel.text = Model().movieObjects?[receivedIndex].title
-        movieRatingLabel.text = "Рейтинг " + String(Model().movieObjects?[receivedIndex].rating ?? 0)
-        posterImageView.image = UIImage(named: Model().movieObjects?[receivedIndex].picture ?? "image1")
-        movieReleaseYearLabel.text = "Год " + String(Model().movieObjects?[receivedIndex].releaseYear ?? 0)
+        DispatchQueue.main.async {
+            if self.model.movieObjects?[self.receivedIndex].isLiked == true {
+                self.likeButton.tintColor = .red
+            } else {
+                self.likeButton.tintColor = .black
+            }
+            self.movieNameLabel.text = Model().movieObjects?[self.receivedIndex].title
+            self.movieRatingLabel.text = "Рейтинг " + String(Model().movieObjects?[self.receivedIndex].rating ?? 0)
+            self.posterImageView.image = UIImage(named: Model().movieObjects?[self.receivedIndex].picture ?? "image1")
+            self.movieReleaseYearLabel.text = "Год " + String(Model().movieObjects?[self.receivedIndex].releaseYear ?? 0)
+        }
         
         if cameFromFav {
             posterImageView.image = UIImage(named: Model().likedMovieObjects?[receivedIndex].picture ?? "image1")
@@ -34,12 +41,6 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
             movieNameLabel.text = Model().movieObjects?[receivedIndex].title
             movieReleaseYearLabel.text = String(Model().movieObjects?[receivedIndex].releaseYear ?? 0)
             movieRatingLabel.text = String(Model().movieObjects?[receivedIndex].rating ?? 0)
-        }
-        
-        if model.movieObjects?[receivedIndex].isLiked == true {
-            likeButton.tintColor = .red
-        } else {
-            likeButton.tintColor = .black
         }
     }
     

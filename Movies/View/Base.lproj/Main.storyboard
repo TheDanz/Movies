@@ -117,13 +117,7 @@
                             <constraint firstItem="AJs-38-rVN" firstAttribute="trailing" secondItem="0Nz-Ql-5gF" secondAttribute="trailing" constant="20" id="wyv-g7-c0Q"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="P0A-Xq-Pdd">
-                            <connections>
-                                <action selector="updateButtonClick:" destination="G5L-bp-jvy" id="Qsj-7e-BTE"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="0Nz-Ql-5gF" id="bc8-b5-ANE"/>

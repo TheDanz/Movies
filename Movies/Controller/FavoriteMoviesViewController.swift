@@ -16,9 +16,6 @@ class FavoriteMoviesViewController: UIViewController {
         collectionView.register(xibFavoriteCell, forCellWithReuseIdentifier: "FavoriteMovieCollectionViewCell")
         collectionView.reloadData()
     }
-    @IBAction func updateButtonClick(_ sender: Any) {
-        collectionView.reloadData()
-    }
 }
 
 extension FavoriteMoviesViewController: UICollectionViewDelegate {
