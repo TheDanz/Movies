@@ -26,7 +26,6 @@ class Model {
     
     func ratingSort() {
         arrayHelper = movieObjects?.sorted(byKeyPath: "rating", ascending: sortAscending)
-        print(realm?.configuration.fileURL)
     }
     
     func showLikedItems() {
