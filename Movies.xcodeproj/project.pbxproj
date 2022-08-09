@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05063B8628A294F80091594C /* JSONParsingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05063B8528A294F80091594C /* JSONParsingService.swift */; };
 		0517C51A288EDD620001E2E2 /* FavoriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0517C519288EDD620001E2E2 /* FavoriteMoviesViewController.swift */; };
 		0517C521288EEC8F0001E2E2 /* FavoriteMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0517C51F288EEC8F0001E2E2 /* FavoriteMovieCollectionViewCell.swift */; };
 		0517C522288EEC8F0001E2E2 /* FavoriteMovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0517C520288EEC8F0001E2E2 /* FavoriteMovieCollectionViewCell.xib */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05063B8528A294F80091594C /* JSONParsingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParsingService.swift; sourceTree = "<group>"; };
 		0517C519288EDD620001E2E2 /* FavoriteMoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesViewController.swift; sourceTree = "<group>"; };
 		0517C51F288EEC8F0001E2E2 /* FavoriteMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		0517C520288EEC8F0001E2E2 /* FavoriteMovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteMovieCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				05F6E18C28A0D83400EEA814 /* URLService.swift */,
+				05063B8528A294F80091594C /* JSONParsingService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 			files = (
 				054DE4A5288C51B300B59032 /* RoundingTransition.swift in Sources */,
 				05BA7E9A28650F1800C9D393 /* MovieDetailsViewController.swift in Sources */,
+				05063B8628A294F80091594C /* JSONParsingService.swift in Sources */,
 				05BA7E8A28650A6900C9D393 /* MainViewController.swift in Sources */,
 				0517C51A288EDD620001E2E2 /* FavoriteMoviesViewController.swift in Sources */,
 				057D2789288ED10B00A76F34 /* Model.swift in Sources */,

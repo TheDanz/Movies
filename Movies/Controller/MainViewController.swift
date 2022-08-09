@@ -9,9 +9,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let ur = URLService()
+        ur.dataRequest()
         
         model.ratingSort()
-
+        
         setFavoriteMoviesButton()
         model.sortedMovieObjects = model.movieObjects
         
