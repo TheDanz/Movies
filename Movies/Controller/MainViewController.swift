@@ -5,17 +5,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
     var searchController = UISearchController()
     let model = Model()
+    let service = URLService()
     @IBOutlet weak var sortButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let ur = URLService()
-        ur.dataRequest()
-        
-        model.ratingSort()
-        
-        setFavoriteMoviesButton()
-        model.sortedMovieObjects = model.movieObjects
         
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
@@ -29,8 +23,9 @@ class MainViewController: UIViewController {
         mainCollectionView.register(xibCell, forCellWithReuseIdentifier: "MovieCell")
 
         DispatchQueue.main.async {
-            self.mainCollectionView.reloadData()
+            self.service.dataRequest()
         }
+        mainCollectionView.reloadData()
     }
     @IBAction func sortButtonClick(_ sender: Any) {
         let arrowUp = UIImage(systemName: "arrow.up")

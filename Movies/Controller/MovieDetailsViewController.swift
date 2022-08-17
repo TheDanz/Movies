@@ -5,6 +5,8 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     var receivedIndex: Int = Int()
     var cameFromFav: Bool = Bool()
     var model = Model()
+    var address = "https://image.tmdb.org/t/p/w500"
+    let urlService = URLService()
     var transtition: RoundingTransition = RoundingTransition()
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
@@ -19,16 +21,24 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         framesCollectionView.delegate = self
         framesCollectionView.dataSource = self
         
+        framesCollectionView.layer.borderWidth = 2.4
+        framesCollectionView.layer.borderColor = UIColor.darkGray.cgColor
+        
         DispatchQueue.main.async {
+            guard let unwrMoviePicture = self.model.movieObjects?[self.receivedIndex].picture,
+                  let posterURL = URL(string: self.address + unwrMoviePicture) else { return }
+            self.urlService.getSetPosters(withURL: posterURL, imageView: self.posterImageView)
+            
+            self.movieNameLabel.text = Model().movieObjects?[self.receivedIndex].title
+            self.movieRatingLabel.text = "Рейтинг " + String(Model().movieObjects?[self.receivedIndex].rating ?? 0)
+            self.posterImageView.image = UIImage(named: Model().movieObjects?[self.receivedIndex].picture ?? "image1")
+            self.movieReleaseYearLabel.text = "Год " + String(Model().movieObjects?[self.receivedIndex].releaseYear ?? 0)
+            
             if self.model.movieObjects?[self.receivedIndex].isLiked == true {
                 self.likeButton.tintColor = .red
             } else {
                 self.likeButton.tintColor = .black
             }
-            self.movieNameLabel.text = Model().movieObjects?[self.receivedIndex].title
-            self.movieRatingLabel.text = "Рейтинг " + String(Model().movieObjects?[self.receivedIndex].rating ?? 0)
-            self.posterImageView.image = UIImage(named: Model().movieObjects?[self.receivedIndex].picture ?? "image1")
-            self.movieReleaseYearLabel.text = "Год " + String(Model().movieObjects?[self.receivedIndex].releaseYear ?? 0)
         }
         
         if cameFromFav {

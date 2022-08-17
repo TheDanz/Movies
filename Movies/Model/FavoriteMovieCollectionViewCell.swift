@@ -6,10 +6,14 @@ class FavoriteMovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var movieReleaseYearLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
+    var address = "https://image.tmdb.org/t/p/w500"
+    let urlService = URLService()
     var model = Model()
     var data: MovieObject? {
         didSet {
-            guard data != nil else { return } 
+            guard let likedData = data,
+                  let url = URL(string: address + likedData.picture) else { return }
+            urlService.getSetPosters(withURL: url, imageView: posterImageView)
             posterImageView.image = UIImage(named: data?.picture ?? "image1")
             movieNameLabel.text = data?.title
             movieReleaseYearLabel.text = String(data?.releaseYear ?? 0)

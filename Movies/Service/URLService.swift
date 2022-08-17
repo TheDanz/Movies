@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 class URLService {
     let APIKey: String = "de90f94f39c65c15d15b072e0ef2a493"
@@ -15,5 +16,15 @@ class URLService {
             self.parser.parseJSON(parseData: unwrData, parseError: error)
         }
         task.resume()
+    }
+    
+    func getSetPosters(withURL url: URL, imageView: UIImageView) {
+        let downloadingTask = session.dataTask(with: url) { picture, response, failure in
+            guard let pict = try? Data(contentsOf: url) else { return }
+            DispatchQueue.main.async {
+                imageView.image = UIImage(data: pict)
+            }
+        }
+        downloadingTask.resume()
     }
 }
