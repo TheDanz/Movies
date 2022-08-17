@@ -13,10 +13,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
             guard let unwrData = data,
                   let url = URL(string: address + unwrData.picture) else { return }
             urlService.getSetPosters(withURL: url, imageView: posterPreviewImageView)
-            posterPreviewImageView.image = UIImage(named: data?.picture ?? "image1")
-            movieNameLabel.text = data?.title
-            releaseYearLabel.text = String(data?.releaseYear ?? 0)
-            ratingLabel.text = String(data?.rating ?? 0)
+            
+            movieNameLabel.text = unwrData.title
+            releaseYearLabel.text = String(unwrData.releaseYear)
+            ratingLabel.text = String(unwrData.rating)
         }
     }
 }

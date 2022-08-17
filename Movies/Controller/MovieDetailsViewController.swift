@@ -6,7 +6,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     var cameFromFav: Bool = Bool()
     var model = Model()
     var address = "https://image.tmdb.org/t/p/w500"
-    let urlService = URLService()
+    let service = URLService()
     var transtition: RoundingTransition = RoundingTransition()
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var movieRatingLabel: UILabel!
@@ -14,44 +14,56 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     @IBOutlet weak var movieReleaseYearLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var framesCollectionView: UICollectionView!
+    @IBOutlet weak var descriptionTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        framesCollectionView.delegate = self
+  
         framesCollectionView.dataSource = self
-        
+        framesCollectionView.delegate = self
+ 
         framesCollectionView.layer.borderWidth = 2.4
         framesCollectionView.layer.borderColor = UIColor.darkGray.cgColor
         
         DispatchQueue.main.async {
-            guard let unwrMoviePicture = self.model.movieObjects?[self.receivedIndex].picture,
-                  let posterURL = URL(string: self.address + unwrMoviePicture) else { return }
-            self.urlService.getSetPosters(withURL: posterURL, imageView: self.posterImageView)
+            if self.cameFromFav == false {
+                guard let unwrFilmPic = self.model.movieObjects?[self.receivedIndex].picture,
+                      let posterURL = URL(string: self.address + unwrFilmPic) else {
+                return
+                }
+ 
+                self.service.getSetPosters(withURL: posterURL, imageView: self.posterImageView)
             
-            self.movieNameLabel.text = Model().movieObjects?[self.receivedIndex].title
-            self.movieRatingLabel.text = "Рейтинг " + String(Model().movieObjects?[self.receivedIndex].rating ?? 0)
-            self.posterImageView.image = UIImage(named: Model().movieObjects?[self.receivedIndex].picture ?? "image1")
-            self.movieReleaseYearLabel.text = "Год " + String(Model().movieObjects?[self.receivedIndex].releaseYear ?? 0)
+                self.movieNameLabel.text = self.model.movieObjects?[self.receivedIndex].title
+                self.movieReleaseYearLabel.text = String(self.model.movieObjects?[self.receivedIndex].releaseYear ?? 0000)
+                self.movieRatingLabel.text = String(self.model.movieObjects?[self.receivedIndex].rating ?? 0)
             
-            if self.model.movieObjects?[self.receivedIndex].isLiked == true {
-                self.likeButton.tintColor = .red
-            } else {
-                self.likeButton.tintColor = .black
+                self.descriptionTextView.text = self.model.movieObjects?[self.receivedIndex].about
+                
+                self.likeButton.alpha = 0.45
+                self.likeButton.tintColor = .gray
+                
+            
+                } else if self.cameFromFav == true {
+                    guard let unwrFilmPic = self.model.likedMovieObjects?[self.receivedIndex].picture,
+                          let posterURL = URL(string: self.address + unwrFilmPic) else {
+                        return
+                    }
+ 
+                    self.service.getSetPosters(withURL: posterURL, imageView: self.posterImageView)
+            
+                    self.movieNameLabel.text = self.model.likedMovieObjects?[self.receivedIndex].title
+                    self.movieReleaseYearLabel.text = String(self.model.likedMovieObjects?[self.receivedIndex].releaseYear ?? 0000)
+                    self.movieRatingLabel.text = String(self.model.likedMovieObjects?[self.receivedIndex].rating ?? 0)
+            
+                    self.descriptionTextView.text = self.model.likedMovieObjects?[self.receivedIndex].about
+            
+                    if self.model.likedMovieObjects?[self.receivedIndex].isLiked == true {
+                        self.likeButton.alpha = 1
+                        self.likeButton.tintColor = .black
+                    }
+                }
             }
-        }
-        
-        if cameFromFav {
-            posterImageView.image = UIImage(named: Model().likedMovieObjects?[receivedIndex].picture ?? "image1")
-            movieNameLabel.text = Model().likedMovieObjects?[receivedIndex].title
-            movieReleaseYearLabel.text = String(Model().likedMovieObjects?[receivedIndex].releaseYear ?? 0)
-            movieRatingLabel.text = String(Model().likedMovieObjects?[receivedIndex].rating ?? 0)
-        } else {
-            posterImageView.image = UIImage(named: Model().movieObjects?[receivedIndex].picture ?? "image1")
-            movieNameLabel.text = Model().movieObjects?[receivedIndex].title
-            movieReleaseYearLabel.text = String(Model().movieObjects?[receivedIndex].releaseYear ?? 0)
-            movieRatingLabel.text = String(Model().movieObjects?[receivedIndex].rating ?? 0)
-        }
     }
     
     @IBAction func framesButtonClick(_ sender: Any) {

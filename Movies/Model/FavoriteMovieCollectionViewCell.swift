@@ -9,15 +9,16 @@ class FavoriteMovieCollectionViewCell: UICollectionViewCell {
     var address = "https://image.tmdb.org/t/p/w500"
     let urlService = URLService()
     var model = Model()
-    var data: MovieObject? {
+    var cellIndex: Int = Int()
+    var data: LikedMovieObject? {
         didSet {
             guard let likedData = data,
                   let url = URL(string: address + likedData.picture) else { return }
             urlService.getSetPosters(withURL: url, imageView: posterImageView)
-            posterImageView.image = UIImage(named: data?.picture ?? "image1")
-            movieNameLabel.text = data?.title
-            movieReleaseYearLabel.text = String(data?.releaseYear ?? 0)
-            movieRatingLabel.text = String(data?.rating ?? 0)
+            
+            movieNameLabel.text = likedData.title
+            movieReleaseYearLabel.text = String(likedData.releaseYear)
+            movieRatingLabel.text = String(likedData.rating)
         }
     }
     
@@ -25,11 +26,10 @@ class FavoriteMovieCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     @IBAction func deleteFromFavoriteClick(_ sender: Any) {
-        guard let likedData = data else { return }
-        model.updateLike(at: likedData.id)
+        model.deleteLikedItem(at: cellIndex)
         if alpha == 0.55 {
             alpha = 1
-        } else {
+        } else if alpha == 1{
             alpha = 0.55
         }
     }

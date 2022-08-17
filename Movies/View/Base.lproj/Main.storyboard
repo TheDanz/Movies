@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LIt-Hm-E93">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LIt-Hm-E93">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -166,7 +166,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SMK-rq-9Sg">
                                 <rect key="frame" x="20" y="102" width="180" height="357"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image10" translatesAutoresizingMaskIntoConstraints="NO" id="2ld-Rl-91J">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2ld-Rl-91J">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -232,7 +232,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image8" translatesAutoresizingMaskIntoConstraints="NO" id="uUb-Xu-CGp">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uUb-Xu-CGp">
                                                     <rect key="frame" x="8" y="8" width="112" height="112"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="112" id="dgS-dv-s9H"/>
@@ -294,6 +294,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="descriptionTextView" destination="Vqm-FN-ATL" id="jTs-Z4-Bgj"/>
                         <outlet property="framesCollectionView" destination="M6b-lB-6qG" id="NAg-6K-MCS"/>
                         <outlet property="likeButton" destination="TQ6-Za-Dwx" id="2VG-90-QHs"/>
                         <outlet property="movieNameLabel" destination="uWA-ey-RNz" id="QeA-dg-gWD"/>
@@ -322,7 +323,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Количество кадров" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mpb-Fy-31t">
-                                <rect key="frame" x="0.0" y="735" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="769" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ftp-TA-EYK"/>
                                 </constraints>
@@ -331,7 +332,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5ZM-3k-cBP">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="727"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="717"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="40" minimumInteritemSpacing="10" id="Y4P-Ze-Xq4">
                                     <size key="itemSize" width="414" height="742"/>
@@ -347,7 +348,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image15" translatesAutoresizingMaskIntoConstraints="NO" id="d8I-sA-j26">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d8I-sA-j26">
                                                     <rect key="frame" x="8" y="8" width="114" height="114"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="114" id="WTW-nN-Zdm"/>
@@ -400,7 +401,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VIk-BM-wnU">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="798"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wka-j6-kgJ">
                                     <size key="itemSize" width="414" height="825"/>
@@ -410,13 +411,13 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FullPictureCollectionViewCell" id="APu-jh-Lzb">
-                                        <rect key="frame" x="0.0" y="-8.5" width="414" height="825"/>
+                                        <rect key="frame" x="0.0" y="-13.5" width="414" height="825"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Yd8-MJ-XIv">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="825"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image12" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-0H-CPN">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-0H-CPN">
                                                     <rect key="frame" x="0.0" y="71" width="414" height="746"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="414" id="6xD-yd-Lk8"/>
@@ -472,10 +473,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wqf-qP-Bzm">
-                                <rect key="frame" x="0.0" y="99" width="414" height="709"/>
+                                <rect key="frame" x="0.0" y="143" width="414" height="699"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4v-Ee-KJU">
-                                <rect key="frame" x="354" y="20" width="40" height="40"/>
+                                <rect key="frame" x="354" y="64" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="T1Y-lN-DIe"/>
                                     <constraint firstAttribute="height" constant="40" id="gOB-jy-MkM"/>
@@ -530,10 +531,6 @@
         <image name="arrow.down" catalog="system" width="120" height="128"/>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
         <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="image10" width="410" height="622"/>
-        <image name="image12" width="412" height="551"/>
-        <image name="image15" width="410" height="620"/>
-        <image name="image8" width="408" height="679"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

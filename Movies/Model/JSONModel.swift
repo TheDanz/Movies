@@ -14,3 +14,10 @@ class Result: Codable {
     var vote_average: Double?
     var backdrop_path: String?
 }
+
+class Backdrop: Codable {
+    var aspect_ratio: Double?
+    var height: Int
+    var file_path: String?
+    var width: Int
+}

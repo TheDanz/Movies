@@ -8,12 +8,26 @@ class PosterFullViewController: UIViewController {
     let urlService = URLService()
     var detailIndexPath: Int = Int()
     let model = Model()
+    var isFavorited: Bool = Bool()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let unwrMoviePicture = self.model.movieObjects?[detailIndexPath].picture,
-              let posterURL = URL(string: self.address + unwrMoviePicture) else { return }
-        self.urlService.getSetPosters(withURL: posterURL, imageView: fullPosterImageView)
+        if isFavorited == false {
+            guard let unwrFilmPic = self.model.movieObjects?[self.detailIndexPath].picture,
+                  let posterURL = URL(string: self.address + unwrFilmPic) else {
+                return
+            }
+            
+            urlService.getSetPosters(withURL: posterURL, imageView: fullPosterImageView)
+        } else if isFavorited == true {
+            guard let unwrFilmPic = self.model.movieObjects?[self.detailIndexPath].picture,
+                  let posterURL = URL(string: self.address + unwrFilmPic) else {
+                return
+            }
+            
+            urlService.getSetPosters(withURL: posterURL, imageView: fullPosterImageView)
+            
+        }
     }
     
     @IBAction func closeButtonClick(_ sender: Any) {

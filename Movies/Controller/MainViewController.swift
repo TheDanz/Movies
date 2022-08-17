@@ -10,7 +10,9 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let realm = try? Realm()
         
+        print(realm?.configuration.fileURL)
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
 
@@ -22,11 +24,14 @@ class MainViewController: UIViewController {
         let xibCell = UINib(nibName: "MovieCollectionViewCell", bundle: nil)
         mainCollectionView.register(xibCell, forCellWithReuseIdentifier: "MovieCell")
 
+        setFavoriteMoviesButton()
+        
         DispatchQueue.main.async {
             self.service.dataRequest()
         }
         mainCollectionView.reloadData()
     }
+    
     @IBAction func sortButtonClick(_ sender: Any) {
         let arrowUp = UIImage(systemName: "arrow.up")
         let arrowDown = UIImage(systemName: "arrow.down")
@@ -63,19 +68,20 @@ extension MainViewController: UICollectionViewDelegate {
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.arrayHelper?.count ?? 0
+        return model.movieObjects?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCollectionViewCell,
-              let item = model.arrayHelper?[indexPath.row] else { return UICollectionViewCell() }
+              let item = model.movieObjects?[indexPath.row] else { return UICollectionViewCell() }
         cell.data = item
         return cell
     }
         
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController else { return }
-        destinationViewController.receivedIndex = model.arrayHelper?[indexPath.row].id ?? 0
+        destinationViewController.cameFromFav = false
+        destinationViewController.receivedIndex = indexPath.row
         navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }
