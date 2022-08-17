@@ -12,7 +12,9 @@ class MovieCollectionViewCell: UICollectionViewCell {
         didSet {
             guard let unwrData = data,
                   let url = URL(string: address + unwrData.picture) else { return }
-            urlService.getSetPosters(withURL: url, imageView: posterPreviewImageView)
+            urlService.getSetPoster(url: url) { image in
+                self.posterPreviewImageView.image = image
+            }
             
             movieNameLabel.text = unwrData.title
             releaseYearLabel.text = String(unwrData.releaseYear)

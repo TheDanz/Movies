@@ -32,7 +32,9 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
                 return
                 }
  
-                self.service.getSetPosters(withURL: posterURL, imageView: self.posterImageView)
+                self.service.getSetPoster(url: posterURL) { image in
+                    self.posterImageView.image = image
+                }
             
                 self.movieNameLabel.text = self.model.movieObjects?[self.receivedIndex].title
                 self.movieReleaseYearLabel.text = String(self.model.movieObjects?[self.receivedIndex].releaseYear ?? 0000)
@@ -50,7 +52,9 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
                         return
                     }
  
-                    self.service.getSetPosters(withURL: posterURL, imageView: self.posterImageView)
+                    self.service.getSetPoster(url: posterURL) { image in
+                        self.posterImageView.image = image
+                    }
             
                     self.movieNameLabel.text = self.model.likedMovieObjects?[self.receivedIndex].title
                     self.movieReleaseYearLabel.text = String(self.model.likedMovieObjects?[self.receivedIndex].releaseYear ?? 0000)

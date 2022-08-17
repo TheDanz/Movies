@@ -18,14 +18,19 @@ class PosterFullViewController: UIViewController {
                 return
             }
             
-            urlService.getSetPosters(withURL: posterURL, imageView: fullPosterImageView)
+            urlService.getSetPoster(url: posterURL) { image in
+                self.fullPosterImageView.image = image
+            }
+            
         } else if isFavorited == true {
             guard let unwrFilmPic = self.model.movieObjects?[self.detailIndexPath].picture,
                   let posterURL = URL(string: self.address + unwrFilmPic) else {
                 return
             }
             
-            urlService.getSetPosters(withURL: posterURL, imageView: fullPosterImageView)
+            urlService.getSetPoster(url: posterURL) { image in
+                self.fullPosterImageView.image = image
+            }
             
         }
     }

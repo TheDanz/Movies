@@ -14,7 +14,9 @@ class FavoriteMovieCollectionViewCell: UICollectionViewCell {
         didSet {
             guard let likedData = data,
                   let url = URL(string: address + likedData.picture) else { return }
-            urlService.getSetPosters(withURL: url, imageView: posterImageView)
+            urlService.getSetPoster(url: url) { image in
+                self.posterImageView.image = image
+            }
             
             movieNameLabel.text = likedData.title
             movieReleaseYearLabel.text = String(likedData.releaseYear)
