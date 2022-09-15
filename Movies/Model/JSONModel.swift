@@ -12,7 +12,7 @@ class Result: Codable {
     var release_date: String?
     var overview: String?
     var vote_average: Double?
-    var backdrop_path: String?
+    var backdrops: [Backdrop]?
 }
 
 class Backdrop: Codable {

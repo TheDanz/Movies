@@ -75,6 +75,7 @@ extension MainViewController: UICollectionViewDataSource {
         guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCollectionViewCell,
               let item = model.movieObjects?[indexPath.row] else { return UICollectionViewCell() }
         cell.data = item
+        cell.layer.cornerRadius = 10
         return cell
     }
         
