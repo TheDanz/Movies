@@ -9,6 +9,7 @@ class JSONParsingService {
             
             let realm = try? Realm()
             try realm?.write({
+                print("WRITEHERE")
                 for item in JSONObjects {
                     let object = MovieObject()
                     
@@ -26,30 +27,31 @@ class JSONParsingService {
                         object.releaseYear = Int(unwrReleaseYear.prefix(4)) ?? 0000
                         object.rating = unwrFilmRating
                         
-                        var backdropsArray: [String] = []
                         guard let APIURL: URL = URL(string: "https://api.themoviedb.org/3/movie/\(unwrID)/images?api_key=de90f94f39c65c15d15b072e0ef2a493") else { return }
                         let task = URLSession.shared.dataTask(with: APIURL) { data, response, error in
                             guard let unwrData = data,
                                   (response as? HTTPURLResponse)?.statusCode == 200,
                                   error == nil else { return }
                             do {
+                                var backdropsArray: [String] = []
                                 let result = try JSONDecoder().decode(Result.self, from: unwrData)
                                 let backdrops = result.backdrops
 
                                 if let unwrBackdrops = backdrops {
                                     for backdrop in unwrBackdrops {
-                                        print(backdrop.file_path ?? "N/A")
                                         backdropsArray.append(backdrop.file_path ?? "N/A")
                                     }
                                 }
+                                try realm?.write({
+                                    object.screenshots.append(objectsIn: backdropsArray)
+                                    realm?.add(object, update: .all)
+                                })
                             } catch let error {
                                 print(error)
                             }
                         }
                         task.resume()
-                        
-                        print(backdropsArray)
-                        object.screenshots.append(objectsIn: backdropsArray)
+                    
                         
                         
                         //object.isLiked = newOne.isLiked

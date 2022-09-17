@@ -117,11 +117,12 @@ extension MovieDetailsViewController: UICollectionViewDelegate {
 
 extension MovieDetailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return model.movieObjects?[receivedIndex].screenshots.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = framesCollectionView.dequeueReusableCell(withReuseIdentifier: "FramesCollectionViewCell", for: indexPath)
+        guard let cell = framesCollectionView.dequeueReusableCell(withReuseIdentifier: "FramesCollectionViewCell", for: indexPath) as? FramesCollectionViewCell else { return UICollectionViewCell() }
+        cell.imageView.image = UIImage(named: "image14")
         return cell
     }
 }
