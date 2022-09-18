@@ -233,7 +233,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image15" translatesAutoresizingMaskIntoConstraints="NO" id="uUb-Xu-CGp">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="®®" translatesAutoresizingMaskIntoConstraints="NO" id="uUb-Xu-CGp">
                                                     <rect key="frame" x="8" y="8" width="112" height="112"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="112" id="dgS-dv-s9H"/>
@@ -535,7 +535,7 @@
         <image name="arrow.down" catalog="system" width="118" height="128"/>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="heart" catalog="system" width="128" height="107"/>
-        <image name="image15" width="410" height="620"/>
+        <image name="®®" width="128" height="128"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

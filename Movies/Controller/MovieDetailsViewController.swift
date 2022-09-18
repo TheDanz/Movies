@@ -122,7 +122,12 @@ extension MovieDetailsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = framesCollectionView.dequeueReusableCell(withReuseIdentifier: "FramesCollectionViewCell", for: indexPath) as? FramesCollectionViewCell else { return UICollectionViewCell() }
-        cell.imageView.image = UIImage(named: "image14")
+        guard let url = URL(string: address + (model.movieObjects?[receivedIndex].screenshots[indexPath.row])!) else {
+            return UICollectionViewCell()
+        }
+        service.getSetPoster(url: url) { image in
+            cell.imageView.image = image
+        }
         return cell
     }
 }
