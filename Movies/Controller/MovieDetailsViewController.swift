@@ -70,7 +70,13 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
             }
     }
     
+
     @IBAction func framesButtonClick(_ sender: Any) {
+        
+        guard let destinationViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MoviePicturesVC") as? MoviePicturesViewController else { return }
+        destinationViewController.receivedIndex = self.receivedIndex
+        guard let navigator = navigationController else { return }
+        navigator.pushViewController(destinationViewController, animated: true)
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
