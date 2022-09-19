@@ -3,6 +3,7 @@ import RealmSwift
 
 class MoviePicturesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var framesCount: UILabel!
     let model = Model()
     var receivedIndex: Int = Int()
     var address = "https://image.tmdb.org/t/p/w500"
@@ -13,6 +14,8 @@ class MoviePicturesViewController: UIViewController, UICollectionViewDelegate, U
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        framesCount.text = String(model.movieObjects?[receivedIndex].screenshots.count ?? 0) + " кадров"
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -28,5 +31,12 @@ class MoviePicturesViewController: UIViewController, UICollectionViewDelegate, U
             cell.imageView.image = image
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "FullPictureVC") as? FullPictureViewController else { return }
+        destinationViewController.screenshotNumber = indexPath.row
+        destinationViewController.receivedIndex = self.receivedIndex
+        navigationController?.pushViewController(destinationViewController, animated: true)
     }
 }
