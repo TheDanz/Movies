@@ -37,6 +37,7 @@ extension FavoriteMoviesViewController: UICollectionViewDataSource {
               }
         cell.data = likedItem
         cell.cellIndex = indexPath.row
+        cell.layer.cornerRadius = 10
         return cell
     }
 }
