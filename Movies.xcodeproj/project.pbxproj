@@ -80,8 +80,8 @@
 			children = (
 				0517C51F288EEC8F0001E2E2 /* FavoriteMovieCollectionViewCell.swift */,
 				057BCB46286F6D530080358F /* MovieCollectionViewCell.swift */,
-				05BA7EA1286516EC00C9D393 /* JSONModel.swift */,
 				057D2788288ED10B00A76F34 /* Model.swift */,
+				05BA7EA1286516EC00C9D393 /* JSONModel.swift */,
 				05C787E2289C656E00D42518 /* MovieObject.swift */,
 				05A406D328D7AD8300CEEE83 /* MoviePicturesCollectionViewCell.swift */,
 				05B2318928D9BA67006DED1F /* BackdropsCollectionViewCell.swift */,

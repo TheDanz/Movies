@@ -1,7 +1,7 @@
 import UIKit
 import RealmSwift
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var mainCollectionView: UICollectionView!
     var searchController = UISearchController()
     let model = Model()
@@ -62,10 +62,6 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: UICollectionViewDelegate {
-    
-}
-
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return model.movieObjects?.count ?? 0
@@ -81,7 +77,6 @@ extension MainViewController: UICollectionViewDataSource {
         
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "MovieDetailsViewController") as? MovieDetailsViewController else { return }
-        destinationViewController.cameFromFav = false
         destinationViewController.receivedIndex = indexPath.row
         navigationController?.pushViewController(destinationViewController, animated: true)
     }

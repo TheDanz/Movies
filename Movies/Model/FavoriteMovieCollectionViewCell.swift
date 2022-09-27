@@ -27,12 +27,13 @@ class FavoriteMovieCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
     @IBAction func deleteFromFavoriteClick(_ sender: Any) {
         model.deleteLikedItem(at: cellIndex)
-        if alpha == 0.55 {
+        if alpha == 0.5 {
             alpha = 1
-        } else if alpha == 1{
-            alpha = 0.55
+        } else if alpha == 1 {
+            alpha = 0.5
         }
     }
 }

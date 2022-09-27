@@ -14,54 +14,41 @@ class Model {
     var sourceURL: String = "https://image.tmdb.org/t/p/original"
 
     func updateLike(at item: Int) {
-        var localChecker: [MovieObject] = []
-        if let film = movieObjects?[item],
-           let array = movieObjects{
+        if let movie = movieObjects?[item] {
             let object = LikedMovieObject()
                 do {
                     try realm?.write ({
-                        film.isLiked = !film.isLiked
-                    
-                        for i in array {
-                            if i.isLiked == true {
-                                localChecker.append(i)
-                            }
-                        }
+                        object.id = movie.id
+                        object.picture = movie.picture
+                        object.title = movie.title
+                        object.about = movie.about
+                        object.releaseYear = movie.releaseYear
+                        object.rating = movie.rating
                         
-                        for el in localChecker {
-                            object.id = el.id
-                            object.picture = el.picture
-                            object.title = el.title
-                            object.about = el.about
-                            object.releaseYear = el.releaseYear
-                            object.rating = el.rating
-                            
-                            realm?.add(object, update: .all)
-                        }
+                        realm?.add(object, update: .all)
                     })
             } catch {
-                print("Error saving done status, \(error)")
+                print(error)
             }
         }
     }
     
     func deleteLikedItem(at item: Int) {
         do {
-        try realm?.write({
-        
-            if let likedArray = likedMovieObjects, let likedObject = likedMovieObjects?[item] {
-                likedObject.isLiked = !likedObject.isLiked
-                
-                for i in likedArray {
-                    if i.isLiked == false {
-                        realm?.delete(i)
+            try realm?.write({
+                if let likedObject = likedMovieObjects?[item] {
+                    if let objects = likedMovieObjects {
+                        for object in objects {
+                            if object.id == likedObject.id {
+                                realm?.delete(object)
+                                break
+                            }
+                        }
                     }
                 }
-            }
-            
-        })
+            })
         } catch {
-            print("Error saving done status, \(error)")
+            print(error)
         }
     }
     

@@ -12,9 +12,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
         didSet {
             guard let unwrData = data,
                   let url = URL(string: address + unwrData.picture) else { return }
+            
             urlService.getSetPoster(url: url) { image in
-
-                print(image)
                 self.posterPreviewImageView.image = image
             }
 

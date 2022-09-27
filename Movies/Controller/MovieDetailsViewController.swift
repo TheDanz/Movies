@@ -3,7 +3,6 @@ import RealmSwift
 
 class MovieDetailsViewController: UIViewController, UIViewControllerTransitioningDelegate, UICollectionViewDelegate {
     var receivedIndex: Int = Int()
-    var cameFromFav: Bool = Bool()
     var model = Model()
     var address = "https://image.tmdb.org/t/p/w500"
     let service = URLService()
@@ -27,50 +26,30 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         let layout = backdropsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.minimumLineSpacing = 10
         
+        likeButton.tintColor = .lightGray
         
         DispatchQueue.main.async {
-            if self.cameFromFav == false {
-                guard let unwrFilmPic = self.model.movieObjects?[self.receivedIndex].picture,
-                      let posterURL = URL(string: self.address + unwrFilmPic) else {
-                return
-                }
+            guard let unwrFilmPic = self.model.movieObjects?[self.receivedIndex].picture,
+                  let posterURL = URL(string: self.address + unwrFilmPic) else { return }
  
-                self.service.getSetPoster(url: posterURL) { image in
-                    self.posterImageView.image = image
-                }
+            self.service.getSetPoster(url: posterURL) { image in
+                self.posterImageView.image = image
+            }
             
-                self.movieNameLabel.text = self.model.movieObjects?[self.receivedIndex].title
-                self.movieReleaseYearLabel.text = String(self.model.movieObjects?[self.receivedIndex].releaseYear ?? 0000)
-                self.movieRatingLabel.text = String(self.model.movieObjects?[self.receivedIndex].rating ?? 0)
+            self.movieNameLabel.text = self.model.movieObjects?[self.receivedIndex].title
+            self.movieReleaseYearLabel.text = String(self.model.movieObjects?[self.receivedIndex].releaseYear ?? 0000)
+            self.movieRatingLabel.text = String(self.model.movieObjects?[self.receivedIndex].rating ?? 0)
+            self.descriptionTextView.text = self.model.movieObjects?[self.receivedIndex].about
             
-                self.descriptionTextView.text = self.model.movieObjects?[self.receivedIndex].about
-                
-                self.likeButton.alpha = 0.45
-                self.likeButton.tintColor = .gray
-                
-            
-                } else if self.cameFromFav == true {
-                    guard let unwrFilmPic = self.model.likedMovieObjects?[self.receivedIndex].picture,
-                          let posterURL = URL(string: self.address + unwrFilmPic) else {
-                        return
-                    }
- 
-                    self.service.getSetPoster(url: posterURL) { image in
-                        self.posterImageView.image = image
-                    }
-            
-                    self.movieNameLabel.text = self.model.likedMovieObjects?[self.receivedIndex].title
-                    self.movieReleaseYearLabel.text = String(self.model.likedMovieObjects?[self.receivedIndex].releaseYear ?? 0000)
-                    self.movieRatingLabel.text = String(self.model.likedMovieObjects?[self.receivedIndex].rating ?? 0)
-            
-                    self.descriptionTextView.text = self.model.likedMovieObjects?[self.receivedIndex].about
-            
-                    if self.model.likedMovieObjects?[self.receivedIndex].isLiked == true {
-                        self.likeButton.alpha = 1
-                        self.likeButton.tintColor = .black
+            if let objects = self.model.likedMovieObjects {
+                for object in objects {
+                    if object.id == self.model.movieObjects?[self.receivedIndex].id {
+                        self.likeButton.tintColor = .red
+                        break
                     }
                 }
             }
+        }
     }
     
     @IBAction func backdropsButtonClick(_ sender: Any) {
@@ -81,13 +60,8 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     }
     
     @IBAction func likeButtonClick(_ sender: Any) {
-        model.updateLike(at: receivedIndex)
-        
-        if likeButton.alpha == 1 {
-            likeButton.alpha = 0.45
-            likeButton.tintColor = .lightGray
-        } else {
-            likeButton.alpha = 1
+        if likeButton.tintColor == .lightGray {
+            model.updateLike(at: receivedIndex)
             likeButton.tintColor = .red
         }
     }
