@@ -15,16 +15,16 @@ class MoviePicturesViewController: UIViewController, UICollectionViewDelegate, U
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        framesCount.text = String(model.movieObjects?[receivedIndex].screenshots.count ?? 0) + " кадров"
+        framesCount.text = String(Model.movieObjects?[receivedIndex].screenshots.count ?? 0) + " кадров"
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.movieObjects?[receivedIndex].screenshots.count ?? 0
+        return Model.movieObjects?[receivedIndex].screenshots.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MoviePicturesCollectionViewCell", for: indexPath) as? MoviePicturesCollectionViewCell else { return UICollectionViewCell() }
-        guard let url = URL(string: address + (model.movieObjects?[receivedIndex].screenshots[indexPath.row])!) else {
+        guard let url = URL(string: address + (Model.movieObjects?[receivedIndex].screenshots[indexPath.row])!) else {
             return UICollectionViewCell()
         }
         service.getSetPoster(url: url) { image in

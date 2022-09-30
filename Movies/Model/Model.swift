@@ -5,16 +5,14 @@ class Model {
     let realm = try? Realm()
     var arrayHelper: Results<MovieObject>?
     var sortAscending: Bool = true
-    var movieObjects: Results<MovieObject>? {
-        return realm?.objects(MovieObject.self)
-    }
+    static var movieObjects: Results<MovieObject>?
     var likedMovieObjects: Results<LikedMovieObject>? {
         return realm?.objects(LikedMovieObject.self)
     }
     var sourceURL: String = "https://image.tmdb.org/t/p/original"
 
     func updateLike(at item: Int) {
-        if let movie = movieObjects?[item] {
+        if let movie = Model.movieObjects?[item] {
             let object = LikedMovieObject()
                 do {
                     try realm?.write ({
@@ -53,11 +51,15 @@ class Model {
     }
     
     func ratingSort() {
-        arrayHelper = movieObjects?.sorted(byKeyPath: "rating", ascending: sortAscending)
+        arrayHelper = Model.movieObjects?.sorted(byKeyPath: "rating", ascending: sortAscending)
+    }
+    
+    func fillUpMovieObjects() {
+        Model.movieObjects = realm?.objects(MovieObject.self)
     }
     
     func search(searchTextValue: String) {
         let predicate = NSPredicate(format: "title CONTAINS [c]%@", searchTextValue)
-        arrayHelper = movieObjects?.filter(predicate)
+        Model.movieObjects = Model.movieObjects?.filter(predicate)
     }
 }

@@ -13,7 +13,7 @@ class PosterFullViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if isFavorited == false {
-            guard let unwrFilmPic = self.model.movieObjects?[self.detailIndexPath].picture,
+            guard let unwrFilmPic = Model.movieObjects?[self.detailIndexPath].picture,
                   let posterURL = URL(string: self.address + unwrFilmPic) else {
                 return
             }
@@ -23,7 +23,7 @@ class PosterFullViewController: UIViewController {
             }
             
         } else if isFavorited == true {
-            guard let unwrFilmPic = self.model.movieObjects?[self.detailIndexPath].picture,
+            guard let unwrFilmPic = Model.movieObjects?[self.detailIndexPath].picture,
                   let posterURL = URL(string: self.address + unwrFilmPic) else {
                 return
             }

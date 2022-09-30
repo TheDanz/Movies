@@ -18,7 +18,7 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
     
     override func viewDidLoad() {
         super.viewDidLoad()
-  
+        
         backdropsCollectionView.dataSource = self
         backdropsCollectionView.delegate = self
         backdropsCollectionView.layer.borderWidth = 2.4
@@ -29,21 +29,21 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
         likeButton.tintColor = .lightGray
         
         DispatchQueue.main.async {
-            guard let unwrFilmPic = self.model.movieObjects?[self.receivedIndex].picture,
+            guard let unwrFilmPic = Model.movieObjects?[self.receivedIndex].picture,
                   let posterURL = URL(string: self.address + unwrFilmPic) else { return }
  
             self.service.getSetPoster(url: posterURL) { image in
                 self.posterImageView.image = image
             }
             
-            self.movieNameLabel.text = self.model.movieObjects?[self.receivedIndex].title
-            self.movieReleaseYearLabel.text = String(self.model.movieObjects?[self.receivedIndex].releaseYear ?? 0000)
-            self.movieRatingLabel.text = String(self.model.movieObjects?[self.receivedIndex].rating ?? 0)
-            self.descriptionTextView.text = self.model.movieObjects?[self.receivedIndex].about
+            self.movieNameLabel.text = Model.movieObjects?[self.receivedIndex].title
+            self.movieReleaseYearLabel.text = String(Model.movieObjects?[self.receivedIndex].releaseYear ?? 0000)
+            self.movieRatingLabel.text = String(Model.movieObjects?[self.receivedIndex].rating ?? 0)
+            self.descriptionTextView.text = Model.movieObjects?[self.receivedIndex].about
             
             if let objects = self.model.likedMovieObjects {
                 for object in objects {
-                    if object.id == self.model.movieObjects?[self.receivedIndex].id {
+                    if object.id == Model.movieObjects?[self.receivedIndex].id {
                         self.likeButton.tintColor = .red
                         break
                     }
@@ -91,14 +91,14 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
 
 extension MovieDetailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.movieObjects?[receivedIndex].screenshots.count ?? 0
+        return Model.movieObjects?[receivedIndex].screenshots.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = backdropsCollectionView.dequeueReusableCell(withReuseIdentifier: "BackdropsCVC", for: indexPath) as? BackdropsCollectionViewCell else {
             return UICollectionViewCell()
         }
-        guard let url = URL(string: address + (model.movieObjects?[receivedIndex].screenshots[indexPath.row])!) else {
+        guard let url = URL(string: address + (Model.movieObjects?[receivedIndex].screenshots[indexPath.row])!) else {
             return UICollectionViewCell()
         }
         service.getSetPoster(url: url) { image in

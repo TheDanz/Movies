@@ -6,13 +6,17 @@ class MainViewController: UIViewController, UICollectionViewDelegate {
     var searchController = UISearchController()
     let model = Model()
     let service = URLService()
+    let realm = try? Realm()
+    let isFromSearchBar: Bool = false
     @IBOutlet weak var sortButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let realm = try? Realm()
+        
+        model.fillUpMovieObjects()
         
         print(realm?.configuration.fileURL)
+        
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
 
@@ -64,12 +68,12 @@ class MainViewController: UIViewController, UICollectionViewDelegate {
 
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.movieObjects?.count ?? 0
+        return Model.movieObjects?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as? MovieCollectionViewCell,
-              let item = model.movieObjects?[indexPath.row] else { return UICollectionViewCell() }
+              let item = Model.movieObjects?[indexPath.row] else { return UICollectionViewCell() }
         cell.data = item
         cell.layer.cornerRadius = 10
         return cell
@@ -84,27 +88,20 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        model.arrayHelper = model.movieObjects
         model.search(searchTextValue: searchText)
         
         if searchBar.text?.count == 0 {
-            model.arrayHelper = model.movieObjects
-            model.ratingSort()
+            model.fillUpMovieObjects()
         }
+        
         DispatchQueue.main.async {
             self.mainCollectionView.reloadData()
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        model.arrayHelper = model.movieObjects
-        
-        if searchBar.text?.count == 0 {
-            model.arrayHelper = model.movieObjects
-            model.ratingSort()
-        }
-        
-        model.ratingSort()
+        model.fillUpMovieObjects()
+
         DispatchQueue.main.async {
             self.mainCollectionView.reloadData()
         }

@@ -13,11 +13,11 @@ class FullPictureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let count = model.movieObjects?[receivedIndex].screenshots.count {
+        if let count = Model.movieObjects?[receivedIndex].screenshots.count {
             numberOfPictureLabel.text = "\(screenshotNumber + 1) / \(count)"
         }
         
-        guard let unwrFilmPic = model.movieObjects?[receivedIndex].screenshots[screenshotNumber],
+        guard let unwrFilmPic = Model.movieObjects?[receivedIndex].screenshots[screenshotNumber],
               let posterURL = URL(string: address + unwrFilmPic) else {
             return
         }
