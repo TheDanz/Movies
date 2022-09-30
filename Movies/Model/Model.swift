@@ -51,7 +51,7 @@ class Model {
     }
     
     func ratingSort() {
-        arrayHelper = Model.movieObjects?.sorted(byKeyPath: "rating", ascending: sortAscending)
+        Model.movieObjects = Model.movieObjects?.sorted(byKeyPath: "rating", ascending: sortAscending)
     }
     
     func fillUpMovieObjects() {
@@ -59,6 +59,7 @@ class Model {
     }
     
     func search(searchTextValue: String) {
+        fillUpMovieObjects()
         let predicate = NSPredicate(format: "title CONTAINS [c]%@", searchTextValue)
         Model.movieObjects = Model.movieObjects?.filter(predicate)
     }

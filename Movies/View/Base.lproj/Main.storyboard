@@ -55,7 +55,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="5PR-0N-yiX">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.down" catalog="system" id="z3e-Jc-sp5">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.up.right.and.arrow.down.left.rectangle" catalog="system" id="z3e-Jc-sp5">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="sortButtonClick:" destination="BYZ-38-t0r" id="arJ-T6-MJ2"/>
@@ -480,7 +480,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.down" catalog="system" width="118" height="128"/>
+        <image name="arrow.up.right.and.arrow.down.left.rectangle" catalog="system" width="128" height="93"/>
         <image name="arrowshape.right.fill" catalog="system" width="128" height="104"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="labelColor">

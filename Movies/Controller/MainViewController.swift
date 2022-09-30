@@ -40,7 +40,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate {
         let arrowUp = UIImage(systemName: "arrow.up")
         let arrowDown = UIImage(systemName: "arrow.down")
         model.sortAscending = !model.sortAscending
-        sortButton.image = model.sortAscending ? arrowUp : arrowDown
+        sortButton.image = model.sortAscending ? arrowDown : arrowUp
         model.ratingSort()
         DispatchQueue.main.async {
             self.mainCollectionView.reloadData()
@@ -92,6 +92,8 @@ extension MainViewController: UISearchBarDelegate {
         
         if searchBar.text?.count == 0 {
             model.fillUpMovieObjects()
+            let arrowUpRightAndArrowDownLeft = UIImage(systemName: "arrow.up.right.and.arrow.down.left.rectangle")
+            sortButton.image = arrowUpRightAndArrowDownLeft
         }
         
         DispatchQueue.main.async {
@@ -101,6 +103,9 @@ extension MainViewController: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         model.fillUpMovieObjects()
+        
+        let arrowUpRightAndArrowDownLeft = UIImage(systemName: "arrow.up.right.and.arrow.down.left.rectangle")
+        sortButton.image = arrowUpRightAndArrowDownLeft
 
         DispatchQueue.main.async {
             self.mainCollectionView.reloadData()
