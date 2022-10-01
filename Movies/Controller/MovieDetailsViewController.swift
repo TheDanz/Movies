@@ -37,8 +37,8 @@ class MovieDetailsViewController: UIViewController, UIViewControllerTransitionin
             }
             
             self.movieNameLabel.text = Model.movieObjects?[self.receivedIndex].title
-            self.movieReleaseYearLabel.text = String(Model.movieObjects?[self.receivedIndex].releaseYear ?? 0000)
-            self.movieRatingLabel.text = String(Model.movieObjects?[self.receivedIndex].rating ?? 0)
+            self.movieReleaseYearLabel.text = "Год: " + String(Model.movieObjects?[self.receivedIndex].releaseYear ?? 0000)
+            self.movieRatingLabel.text = "Рейтинг: " + String(Model.movieObjects?[self.receivedIndex].rating ?? 0)
             self.descriptionTextView.text = Model.movieObjects?[self.receivedIndex].about
             
             if let objects = self.model.likedMovieObjects {

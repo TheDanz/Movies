@@ -19,8 +19,8 @@ class FavoriteMovieCollectionViewCell: UICollectionViewCell {
             }
             
             movieNameLabel.text = likedData.title
-            movieReleaseYearLabel.text = String(likedData.releaseYear)
-            movieRatingLabel.text = String(likedData.rating)
+            movieReleaseYearLabel.text = "Год: " + String(likedData.releaseYear)
+            movieRatingLabel.text = "Рейтинг: " + String(likedData.rating)
         }
     }
     

@@ -18,8 +18,8 @@ class MovieCollectionViewCell: UICollectionViewCell {
             }
             
             movieNameLabel.text = unwrData.title
-            releaseYearLabel.text = String(unwrData.releaseYear)
-            ratingLabel.text = String(unwrData.rating)
+            releaseYearLabel.text = "Год: " + String(unwrData.releaseYear)
+            ratingLabel.text = "Рейтинг: " + String(unwrData.rating)
         }
     }
 }

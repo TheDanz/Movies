@@ -15,7 +15,7 @@ class MoviePicturesViewController: UIViewController, UICollectionViewDelegate, U
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        framesCount.text = String(Model.movieObjects?[receivedIndex].screenshots.count ?? 0) + " кадров"
+        framesCount.text = "Всего: " + String(Model.movieObjects?[receivedIndex].screenshots.count ?? 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
