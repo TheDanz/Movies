@@ -19,6 +19,10 @@ class FavoriteMoviesViewController: UIViewController {
             self.collectionView.reloadData()
         }
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        model.deleteLikedItems()
+    }
 }
 
 extension FavoriteMoviesViewController: UICollectionViewDelegate {

@@ -29,7 +29,7 @@ class FavoriteMovieCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func deleteFromFavoriteClick(_ sender: Any) {
-        model.deleteLikedItem(at: cellIndex)
+        Model.deletedIDs.append(data!.id)
         if alpha == 0.5 {
             alpha = 1
         } else if alpha == 1 {

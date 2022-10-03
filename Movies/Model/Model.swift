@@ -10,6 +10,7 @@ class Model {
         return realm?.objects(LikedMovieObject.self)
     }
     var sourceURL: String = "https://image.tmdb.org/t/p/original"
+    static var deletedIDs: [Int] = []
 
     func updateLike(at item: Int) {
         if let movie = Model.movieObjects?[item] {
@@ -30,14 +31,14 @@ class Model {
             }
         }
     }
-    
-    func deleteLikedItem(at item: Int) {
+
+    func deleteLikedItems() {
         do {
-            try realm?.write({
-                if let likedObject = likedMovieObjects?[item] {
+            try realm?.write ({
+                for id in Model.deletedIDs {
                     if let objects = likedMovieObjects {
                         for object in objects {
-                            if object.id == likedObject.id {
+                            if object.id == id {
                                 realm?.delete(object)
                                 break
                             }
