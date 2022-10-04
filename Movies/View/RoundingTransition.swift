@@ -56,6 +56,7 @@ extension RoundingTransition: UIViewControllerAnimatedTransitioning {
                 let viewSize = returnableView.frame.size
                 round.frame = roundFrame(withViewCenter: viewCenter, size: viewSize, startPoint: start)
                 round.layer.cornerRadius = round.frame.size.height / 2
+                round.center = start
                 UIView.animate(withDuration: time, animations: {
                     self.round.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
                     returnableView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
