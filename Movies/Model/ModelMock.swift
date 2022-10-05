@@ -9,9 +9,18 @@ class ModelMock: Model {
     var isFillUpMovieObjectsCalled: Bool = false
     var fillUpMovieObjectsCalledCount: Int = 0
     
+    var isRatingSortCalled: Bool = false
+    var ratingSortCalledCount: Int = 0
+    
     override func fillUpMovieObjects() {
         isFillUpMovieObjectsCalled = true
         fillUpMovieObjectsCalledCount += 1
-        Model.movieObjects = realm?.objects(MovieObject.self)
+        ModelMock.mockMovieObjects = realm?.objects(MovieObject.self)
+    }
+    
+    override func ratingSort() {
+        isRatingSortCalled = true
+        ratingSortCalledCount += 1
+        ModelMock.mockMovieObjects = ModelMock.mockMovieObjects?.sorted(byKeyPath: "rating", ascending: sortAscending)
     }
 }
