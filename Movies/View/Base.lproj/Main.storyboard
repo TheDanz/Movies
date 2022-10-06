@@ -192,6 +192,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tGQ-tD-vNe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="MovieDetailsView">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="zbG-Oa-ZmH" firstAttribute="top" secondItem="7oz-KZ-Wlg" secondAttribute="bottom" constant="8" symbolic="YES" id="09p-j3-y3x"/>
                             <constraint firstItem="rn5-Zb-HPe" firstAttribute="top" secondItem="SeT-GM-PT0" secondAttribute="bottom" constant="8" symbolic="YES" id="7lP-15-wBg"/>

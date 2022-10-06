@@ -13,4 +13,13 @@ final class MoviesUITests: XCTestCase {
         let verticalScrollBar8PagesCollectionView = app/*@START_MENU_TOKEN@*/.collectionViews.containing(.other, identifier:"Vertical scroll bar, 8 pages").element/*[[".collectionViews.containing(.other, identifier:\"Horizontal scroll bar, 1 page\").element",".collectionViews.containing(.other, identifier:\"Vertical scroll bar, 8 pages\").element"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         XCTAssert(verticalScrollBar8PagesCollectionView.exists)
     }
+    
+    func testMovieDetailsViewExistsAfterClickOnCollectionView() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        XCUIApplication().collectionViews.children(matching: .cell).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
+        
+        XCTAssert(app.otherElements["MovieDetailsView"].exists)
+    }
 }
