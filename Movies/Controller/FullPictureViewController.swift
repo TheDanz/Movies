@@ -8,7 +8,6 @@ class FullPictureViewController: UIViewController {
     var receivedIndex: Int = Int()
     var address = "https://image.tmdb.org/t/p/w500"
     let service = URLService()
-    let model = Model()
     
     override func viewDidLoad() {
         super.viewDidLoad()

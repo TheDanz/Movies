@@ -138,9 +138,9 @@
 			isa = PBXGroup;
 			children = (
 				0517C51F288EEC8F0001E2E2 /* FavoriteMovieCollectionViewCell.swift */,
-				05A2AE3028EDBC4800171D65 /* ModelMock.swift */,
 				057BCB46286F6D530080358F /* MovieCollectionViewCell.swift */,
 				057D2788288ED10B00A76F34 /* Model.swift */,
+				05A2AE3028EDBC4800171D65 /* ModelMock.swift */,
 				05BA7EA1286516EC00C9D393 /* JSONModel.swift */,
 				05C787E2289C656E00D42518 /* MovieObject.swift */,
 				05A406D328D7AD8300CEEE83 /* MoviePicturesCollectionViewCell.swift */,

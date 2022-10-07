@@ -1,7 +1,7 @@
 import UIKit
 import RealmSwift
 
-class FavoriteMoviesViewController: UIViewController {
+class FavoriteMoviesViewController: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     var model = Model()
     
@@ -23,10 +23,6 @@ class FavoriteMoviesViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         model.deleteLikedItems()
     }
-}
-
-extension FavoriteMoviesViewController: UICollectionViewDelegate {
-    
 }
 
 extension FavoriteMoviesViewController: UICollectionViewDataSource {

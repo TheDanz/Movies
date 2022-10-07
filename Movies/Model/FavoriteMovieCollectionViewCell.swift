@@ -8,7 +8,6 @@ class FavoriteMovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var movieRatingLabel: UILabel!
     var address = "https://image.tmdb.org/t/p/w500"
     let urlService = URLService()
-    var model = Model()
     var cellIndex: Int = Int()
     var data: LikedMovieObject? {
         didSet {

@@ -15,8 +15,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate {
         
         model.fillUpMovieObjects()
         
-        print(realm?.configuration.fileURL)
-        
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
 

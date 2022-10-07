@@ -1,5 +1,5 @@
-import Foundation
 import UIKit
+import Foundation
 
 class RoundingTransition: NSObject {
     var round = UIView()

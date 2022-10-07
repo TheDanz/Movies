@@ -1,5 +1,5 @@
-import Foundation
 import UIKit
+import Foundation
 
 class URLService {
     let APIKey: String = "de90f94f39c65c15d15b072e0ef2a493"
@@ -7,7 +7,6 @@ class URLService {
     let parser = JSONParsingService()
     var imageCache = NSCache<NSString, UIImage>()
 
-    
     func dataRequest() {
         guard let APIURL: URL = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(APIKey)&language=en-US&page=1") else { return }
         
@@ -21,7 +20,6 @@ class URLService {
     }
     
     func getSetPoster(url: URL, completion: @escaping (UIImage) -> Void) {
-            
        if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
            completion(cachedImage)
        } else {
@@ -46,7 +44,7 @@ class URLService {
                }
             }
             downloadingTask.resume()
-          }
+       }
     }
 }
 

@@ -4,7 +4,6 @@ import RealmSwift
 class MoviePicturesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var framesCount: UILabel!
-    let model = Model()
     var receivedIndex: Int = Int()
     var address = "https://image.tmdb.org/t/p/w500"
     let service = URLService()
