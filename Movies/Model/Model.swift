@@ -51,6 +51,20 @@ class Model {
         }
     }
     
+    func deleteAllLikedItems() {
+        do {
+            try realm?.write({
+                if let objects = likedMovieObjects {
+                    for object in objects {
+                        realm?.delete(object)
+                    }
+                }
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
     func ratingSort() {
         Model.movieObjects = Model.movieObjects?.sorted(byKeyPath: "rating", ascending: sortAscending)
     }

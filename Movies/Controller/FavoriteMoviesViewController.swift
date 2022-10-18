@@ -20,6 +20,14 @@ class FavoriteMoviesViewController: UIViewController, UICollectionViewDelegate {
         }
     }
     
+    @IBAction func clearAllButtonClick(_ sender: Any) {
+        model.deleteAllLikedItems()
+        
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         model.deleteLikedItems()
     }
